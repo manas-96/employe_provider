@@ -1,7 +1,10 @@
+import 'package:employee_provider/logic/address_logic.dart';
 import 'package:employee_provider/views/components/app_bar.dart';
 import 'package:employee_provider/views/components/drawer.dart';
 import 'package:employee_provider/views/components/gradient_body.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../helper.dart';
 
@@ -14,6 +17,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var addressController = Get.put(AddressLogic());
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,10 +83,13 @@ class _HomePageState extends State<HomePage> {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
-                      image: NetworkImage("https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"),
-                      fit: BoxFit.cover
-                    )
+                  ),
+                  child: GoogleMap(
+                    mapType: MapType.hybrid,
+                    initialCameraPosition: _kGooglePlex,
+                    onMapCreated: (GoogleMapController controller) {
+
+                    }
                   ),
                 ),
               )

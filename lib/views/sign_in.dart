@@ -20,151 +20,142 @@ class _SignInState extends State<SignIn> {
   AuthLogic authLogic = Get.put(AuthLogic());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bgColor,
-      body: GradientBody(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.18,
-                ),
-                Container(
-                  height: 90,
-                  width: 90,
-                  decoration: BoxDecoration(
-                    color: color3,
-                    shape: BoxShape.circle
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Scaffold(
+        backgroundColor: bgColor,
+        body: GradientBody(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.18,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Image.asset(
-                      "images/Vector.png",
-                       height: 60,
-                       width: 60,
-                       fit: BoxFit.contain,
+                  Container(
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: color3,
+                      shape: BoxShape.circle
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ImageIcon(
+                         const AssetImage("images/Vector.png",),
+                        color: color1,
+                      )
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Welcome back",
-                  style: textStyle1,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  "Enter your credential to sign in",
-                  style: textStyle3,
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: color3),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8),
-                    child: Row(
-                      children: [
-                        Icon(Icons.person_outline,color: color4,),
-                        const SizedBox(width: 5,),
-                        Expanded(
-                          child: TextField(
-                            style: const TextStyle(color: Colors.white),
-                            keyboardType: TextInputType.emailAddress,
-                            onChanged: (val) {
-                              authLogic.email.value=val;
-                            },
-                            decoration: InputDecoration(
-                                hintText: "Email/Username",
-                                hintStyle: textStyle3,
-                                border: InputBorder.none),
-                          ),
-                        ),
-                      ],
-                    )
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                SizedBox(height: 20,),
-
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: color3),
-                  child: Padding(
+                  Text(
+                    "Welcome back",
+                    style: textStyle1,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    "Enter your credential to sign in",
+                    style: textStyle3,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: color3),
+                    child: Padding(
                       padding: const EdgeInsets.only(left: 8.0, right: 8),
                       child: Row(
                         children: [
-                          Icon(Icons.lock_outline,color: color4,),
+                          Icon(Icons.person_outline,color: color1,),
                           const SizedBox(width: 5,),
                           Expanded(
                             child: TextField(
-                              style: const TextStyle(color: Colors.white),
-                              obscureText: true,
+                              style:  TextStyle(color: color1),
+                              keyboardType: TextInputType.emailAddress,
                               onChanged: (val) {
-                                authLogic.password.value=val;
+                                authLogic.email.value=val;
                               },
                               decoration: InputDecoration(
-                                  hintText: "Password",
+                                  hintText: "Email",
                                   hintStyle: textStyle3,
                                   border: InputBorder.none),
                             ),
                           ),
                         ],
                       )
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
+                  SizedBox(height: 20,),
 
-                Obx(() => InkWell(
-                  onTap: () {authLogic.logIn();},
-                  child: Container(
-                    height: 45,
-                    width: Get.width,
+                  Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: btnColor,
-
-                    ),
-                    alignment: Alignment.center,
+                        borderRadius: BorderRadius.circular(30),
+                        color: color3),
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: authLogic.loader.value?const CircularProgressIndicator(backgroundColor: Colors.white,):
-                      Text("LOGIN",style: titleStyle,),
+                        padding: const EdgeInsets.only(left: 8.0, right: 8),
+                        child: Row(
+                          children: [
+                            Icon(Icons.lock_outline,color: color1,),
+                            const SizedBox(width: 5,),
+                            Expanded(
+                              child: TextField(
+                                style: TextStyle(color: color1),
+                                obscureText: true,
+                                onChanged: (val) {
+                                  authLogic.password.value=val;
+                                },
+                                decoration: InputDecoration(
+                                    hintText: "Password",
+                                    hintStyle: textStyle3,
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                          ],
+                        )
                     ),
                   ),
-                )),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text("Forgot password?",style: textStyle4,),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Don't have an account?   ",style: textStyle5,),
-                    InkWell(
-                      onTap: (){
-                        Get.to(SignUp());
-                      },
-                      child: Text("Sign up",style: textStyle4,),
-                    )
-                  ],
-                )
-              ],
+                  const SizedBox(
+                    height: 30,
+                  ),
+
+                  Obx(() => InkWell(
+                    onTap: () {authLogic.logIn();},
+                    child: Container(
+                      height: 45,
+                      width: Get.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: btnColor,
+
+                      ),
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: authLogic.loader.value?const CircularProgressIndicator(backgroundColor: Colors.white,):
+                        Text("LOGIN",style: titleStyle,),
+                      ),
+                    ),
+                  )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text("Forgot password?",style: textStyle4,),
+                  const SizedBox(
+                    height: 10,
+                  ),
+
+                ],
+              ),
             ),
           ),
         ),

@@ -7,12 +7,12 @@ appBar(String title, bool back){
   return AppBar(
     automaticallyImplyLeading: back,
     backgroundColor: color3,
-    title: Text(title),
+    iconTheme: const IconThemeData(
+        color: Color(0xffe0ff01)
+    ),
+    title: Text(title,style: TextStyle(color: color1),),
     actions: [
-      IconButton(
-        icon: Icon(Icons.notifications_none,color: Colors.white,),
-        onPressed: (){},
-      )
+
     ],
   );
 }

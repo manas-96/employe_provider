@@ -31,8 +31,8 @@ class _WorksiteState extends State<Worksite> {
       );
     }
     if(scheduleController.worksiteList.isEmpty){
-      return const Center(
-        child: Text("Empty list",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+      return  Center(
+        child: Text("Empty list",style: TextStyle(color: color1,fontWeight: FontWeight.bold),),
       );
     }
     return ListView.builder(
@@ -41,7 +41,9 @@ class _WorksiteState extends State<Worksite> {
       itemCount: scheduleController.worksiteList.length,
       itemBuilder: (context,index){
         if(scheduleController.loading.value){
-          return const CircularProgressIndicator();
+          return CircularProgressIndicator(
+            color: color1,
+          );
         }
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
@@ -59,7 +61,7 @@ class _WorksiteState extends State<Worksite> {
               trailing: IconButton(
                 icon: Icon(Icons.phone,color: btnColor,),
                 onPressed: (){
-                  url_launcher.launch("tel://21213123123");
+                  url_launcher.launch("tel://${scheduleController.worksiteList[index]["contact_no"]}");
                 },
               ),
             ),

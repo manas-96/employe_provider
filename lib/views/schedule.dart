@@ -51,7 +51,7 @@ class _ScheduleState extends State<Schedule> {
               children: [
 
                 const SizedBox(height: 15,),
-                Obx(() => scheduleController.loading.value?const CircularProgressIndicator():
+                Obx(() => scheduleController.loading.value? CircularProgressIndicator(color: color1,):
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -71,10 +71,10 @@ class _ScheduleState extends State<Schedule> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(dateFormat(scheduleController.scheduleList[index]["start_date"]),
-                                  style: TextStyle(fontSize: 16,color: color4,fontWeight: FontWeight.w400 ),
+                                  style: TextStyle(fontSize: 16,color: color1,fontWeight: FontWeight.w400 ),
                                 ),
                                 Text(dateFormat2(scheduleController.scheduleList[index]["start_date"]),
-                                  style: TextStyle(fontSize: 13,color: color4,fontWeight: FontWeight.w400 ),
+                                  style: TextStyle(fontSize: 13,color: color1,fontWeight: FontWeight.w400 ),
                                 )
                               ],
                             ),
@@ -84,6 +84,7 @@ class _ScheduleState extends State<Schedule> {
                             onTap: (){
                               Get.to(Details(index: index));
                             },
+                            trailing: Icon(Icons.arrow_forward_ios,color: color1,),
                           ),
                         ),
                       ),

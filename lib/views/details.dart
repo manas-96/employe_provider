@@ -4,8 +4,9 @@ import 'package:employee_provider/views/components/gradient_body.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'components/app_bar.dart';
+import 'location_service.dart';
 
 
 class Details extends StatefulWidget {
@@ -61,9 +62,9 @@ class _DetailsState extends State<Details> {
                         ),
                         trailing: IconButton(
                           onPressed: (){
-
+                            Get.to(LocationServices());
                           },
-                          icon: Icon(Icons.directions,color: color4,),
+                          icon: Icon(Icons.directions,color: color1,),
                         ),
                       ),
                       const SizedBox(height: 5,),
@@ -77,7 +78,8 @@ class _DetailsState extends State<Details> {
                         ),
                         trailing: IconButton(
                           onPressed: (){
-
+                            print(scheduleController.scheduleList[widget.index]["schedule"]["contact"]["mobile"]);
+                            url_launcher.launch("tel://${scheduleController.scheduleList[widget.index]["schedule"]["contact"]["mobile"]}");
                           },
                           icon: Icon(Icons.call,color: btnColor,),
                         ),

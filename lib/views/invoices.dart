@@ -36,7 +36,7 @@ class _InvoicesState extends State<Invoices> {
           canvasColor: color3, //This will change the drawer background to blue.
           //other styles
         ),
-        child: drawer(),
+        child: const drawer(),
       ),
       body: GradientBody(
         child: SingleChildScrollView(
@@ -63,7 +63,7 @@ class _InvoicesState extends State<Invoices> {
                         height: 40,
                         decoration: BoxDecoration(
                             color: invoiceLogic.btnValue[0]? btnColor:color3,
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 bottomLeft: Radius.circular(20)
                             )

@@ -31,7 +31,7 @@ splashButton({title, onTap, width}){
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Colors.transparent,
-          border: Border.all(color: Colors.white)
+          border: Border.all(color: color1)
       ),
       alignment: Alignment.center,
       child: Padding(

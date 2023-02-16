@@ -1,4 +1,5 @@
 import 'package:employee_provider/views/splash.dart';
+import 'package:employee_provider/views/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,14 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Employ Provider',
       theme: ThemeData(
 
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const Splash(),
+      home: const Welcome(),
     );
   }
 }

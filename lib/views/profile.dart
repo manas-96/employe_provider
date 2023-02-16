@@ -3,6 +3,7 @@ import 'package:employee_provider/models/model_classes/user_model.dart';
 import 'package:employee_provider/views/components/app_bar.dart';
 import 'package:employee_provider/views/components/buttons.dart';
 import 'package:employee_provider/views/components/gradient_body.dart';
+import 'package:employee_provider/views/update_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -57,31 +58,33 @@ class _ProfileState extends State<Profile> {
                                   decoration: BoxDecoration(
                                       color: color3,
                                       shape: BoxShape.circle,
-                                      boxShadow: const [
+                                      boxShadow:  [
                                         BoxShadow(
                                             blurRadius: 2,
-                                            color: Colors.white
+                                            color: color1
                                         )
                                       ]
                                   ),
-                                  child:const Icon(Icons.person_outline,color: Colors.white,),
+                                  child: Icon(Icons.person_outline,color: color1,),
                                 ),
-                                title: Text("First Labor",style: TextStyle(color: Colors.white),),
-                                subtitle: Text("Provider Enterprise",style: TextStyle(color: color4),),
+                                title: Text(profileLogic.displayName.value,style: TextStyle(color: color1),),
+                                subtitle: Text("Provider - ${profileLogic.provider["name"]}",style: TextStyle(color: color1),),
                               ),
                               Divider(color: color4,),
                               ListTile(
-                                leading: Icon(Icons.phone,color: color4,),
-                                title: Text("9876543210",style: textStyle9,),
+                                leading: Icon(Icons.phone,color: color1,),
+                                title: Text(profileLogic.displayMobile.value,style: textStyle9,),
                               ),
                               ListTile(
-                                leading: Icon(Icons.email,color: color4,),
-                                title: Text("l@l.com.com",style: textStyle9,),
+                                leading: Icon(Icons.email,color: color1,),
+                                title: Text(profileLogic.displayEmail.value,style: textStyle9,),
                               ),
                               SizedBox(height: 10,),
                               buttons(
                                   context: context,
-                                  onTap: (){},
+                                  onTap: (){
+                                    Get.to(const UpdateProfile());
+                                  },
                                   width: 200.0,
                                   title: "Edit profile"
                               )
